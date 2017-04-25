@@ -1,11 +1,11 @@
 <?php
-		include("connection.php"); //Establishing connection with our database
+			include("connection.php"); //Establishing connection with our database
 			session_start();
 			$domein = "";
 			$extensieselectie = "";
 			$error = "";
 			$username = $_SESSION['username'];
-			$error2 = "";
+			
 			// EMAIL sectie (Bij reservering) 
 			
 			$to = '';
@@ -26,11 +26,24 @@
 		}else
 		{
 			// Define variable
-			$domein=$_POST['domein'];
-			$extensieselectie = $_POST["extensieselect"];			
+			$domein=$_POST['domein'];	
+			
+			if (preg_match('/.nl/',$domein)) {
+			$extensieselectie = "nl";
+			} elseif (preg_match('/.com/',$domein)) {
+			$extensieselectie = "com";
+			} elseif (preg_match('/.be/',$domein)) {
+			$extensieselectie = "be";
+			} elseif (preg_match('/.uk/',$domein)) {
+			$extensieselectie = "uk";
+			} else {
+			$error = "Er is een error ontstaan, gebruik astublieft alleen .NL/.COM/.BE/.UK";
+			}
 			}
 	}		
-			$url = "https://api.oxxa.com/command.php?apiuser=sebbie&apipassword=BW72VDD&command=domain_check&tld=$extensieselectie&sld=$domein";
+			$domeincheck = substr($domein, 0, strpos($domein, "."));
+			
+			$url = "https://api.oxxa.com/command.php?apiuser=sebbie&apipassword=BW72VDD&command=domain_check&tld=$extensieselectie&sld=$domeincheck";
 			$xml = simplexml_load_file($url);
 			
 			$domeinnaam = $xml->order[0]->sld;
@@ -97,6 +110,11 @@
 			
 			}
 	}
+
+
+	 
+?>
+
 
 
 	 
