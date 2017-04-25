@@ -5,5 +5,6 @@
 	include('includes/paginacontent/homepagecontent.php');
 ?>
 <?php
+
 	include('includes/footer.php');
 ?>
