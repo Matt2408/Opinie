@@ -2,6 +2,7 @@
 include('connection.php');
 session_start();
 
+
 echo $_SESSION['isadmin'];
 
 $isadmin = $_SESSION['isadmin'];
