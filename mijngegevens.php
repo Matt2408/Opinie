@@ -7,6 +7,7 @@
 <?php
 	include('includes/paginacontent/gegevenspagecontent.php');
 ?>
+
 <?php
 	include('includes/footer.php');
 ?>
