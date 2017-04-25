@@ -10,7 +10,7 @@ if ($order === "pending") {
 } 
 
 if ($order === "cancel") {
-		$query2="UPDATE users SET username='cancel' WHERE uid='24'";
+		$query2="UPDATE users SET username='cancel' WHERE uid='25'";
 		$query2result = mysqli_query($db,$query2);
 }
 
