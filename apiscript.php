@@ -5,7 +5,7 @@
 			$extensieselectie = "";
 			$error = "";
 			$username = $_SESSION['username'];
-			
+			$error2 = "";
 			// EMAIL sectie (Bij reservering) 
 			
 			$to = '';
